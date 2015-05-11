@@ -1,0 +1,58 @@
+<!doctype html>
+{% load staticfiles %}
+<html lang="en">
+  <head>
+      <title>Change Password| User</title>
+    <!-- Link to the Bootstrap CSS from a CDN -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"
+          rel="stylesheet">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css"> 
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+ <link href="{% static "style.css" %}" rel="stylesheet">
+  </head>
+  <body>
+<div class="container top-button">
+<div class=header style=" display: table;margin: 0 auto;">
+	<a href="#">Change Password | </a><a href="/logout/">Logout</a></div></div>
+<div class="container " style="margin-top:5%;width:30%;">
+    <div class="row">
+		<form action="." method="post" name="form" role="form">{% csrf_token %}
+		  {% if form.non_field_errors %}
+           		 <p class="error">
+		          {% for error in form.non_field_errors %}
+		            {{ error }}
+		          {% endfor %}
+            		</p>
+            {% endif %}
+             {% if form.errors and not form.non_field_errors %}
+                            <p class="error">Your username and password didn't match. Please try again.</p>
+                      {% endif %}
+		 {% for field in form %}
+            <div class="form-group">
+              <!-- Render the field label tag -->
+              <div class="cols-lg-4 cols-md-4 cols-sm-4">
+            <div class="form-group">
+              <!-- Render the input field -->
+		          {{ field }}
+		        <!-- Iterate over the field's errors, if any and display
+                 them one by one in a error alert
+            -->
+		        {% if field.errors %}
+		          <p class="error">
+		          {% for error in field.errors %}
+		            {{ error }}
+		          {% endfor %}
+		          </p>
+		        {% endif %}
+            </div>
+             </div>
+          {% endfor %}
+		
+
+		<input type="submit" class="btn btn-success" value="Change Password" />
+		</div>
+	</form>
+</div>
+</body>
+</html>

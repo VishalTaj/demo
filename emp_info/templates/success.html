@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+  <head>
+    <!-- Link to the Bootstrap CSS from a CDN -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"
+          rel="stylesheet">
+<link href="{% static "style.css" %}" rel="stylesheet">
+  </head>
+  <body>
+	<div class="container top-button">
+<div class=header style=" display: table;margin: 0 auto;">
+	<a href="/changep/">Home</a></div></div>
+    <div class="container">
+      <div class="header">
+        <h3 class="text-muted">Welcome {{ username }}! </h3>
+      </div>
+       <div class="row">
+       <!-- Display the success message on successful submission and validation
+            of the contact form data.
+        -->
+       <div class="alert alert-success">
+         Your registration completed successfully.Your User Name will be {{ username }}
+       </div>
+       </div>
+    </div>
+  </body>
+</html>
+
