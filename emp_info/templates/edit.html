@@ -1,0 +1,77 @@
+<!doctype html>
+{% load staticfiles %}
+<html lang="en">
+  <head>
+      <title>Edit | User</title>
+    <!-- Link to the Bootstrap CSS from a CDN -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"
+          rel="stylesheet">
+	<link href="{% static "style.css" %}" rel="stylesheet">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css"> 
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+  <style>
+	
+</style>
+  </head>
+  <body>
+<div class="container top-button">
+<div class=header style=" display: table;margin: 0 auto;">
+	<a href="/changep/{{ b.id }}/">Change Password | </a><a href="/logout/">Logout</a></div></div>
+<h3> Welcome {{ b.username }} ,</h3>
+<div class="container containertab" style="margin-top:5%;width:30%;">
+		 <div class="row" style="padding:20px;">
+	
+          <form role="form" action="/edit/{{ b.id }}/" method="post"> {% csrf_token %}
+	{% if form.non_field_errors %}
+            <p class="error">
+		          {% for error in form.non_field_errors %}
+		            {{ error }}
+		          {% endfor %}
+            </p>
+           {% endif %}
+	<input type="hidden" value={{ b.id }} />
+	<div class="cols-lg-4 cols-md-4">
+            <div class="form-group">
+		
+	   </div>
+	</div>
+	<div class="cols-lg-4 cols-md-4">
+            <div class="form-group">
+		<input type="text" id="first_name" name="first_name" value= "{{ b.first_name }}" >
+	   </div>
+	</div>
+	<div class="cols-lg-4 cols-md-4">
+            <div class="form-group">
+		<input type="text" id="last_name" name="last_name" value= "{{ b.last_name }}" >
+	   </div>
+	</div>
+	</div>
+	<div class="cols-lg-4 cols-md-4 cols-sm-4">
+            <div class="form-group">
+		<input type="text" id="email" name=email value="{{ b.email }}" >
+	   </div>
+	</div>
+<br/>
+		
+    		<input type="submit" class="btn btn-success" value="Save" />
+   	  </form>
+  <script>
+  $(function() {
+    $( ".datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "1980:2012",
+    });
+  });
+  </script>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+
+
+
+		
